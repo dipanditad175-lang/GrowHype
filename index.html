@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GrowLocal Digital | Local Business Marketing</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+        --purple: #6c2bd9;
+        --purple-light: #9333ea;
+        --gold: #f5a623;
+        --dark: #0d0118;
+        --card: #1a0a2e;
+        --text-light: rgba(255,255,255,0.7);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        background: var(--dark);
+        color: white;
+        overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* NAVBAR */
+    .navbar {
+        width: 100%;
+        padding: 20px 7%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #12031f;
+        border-bottom: 1px solid rgba(108,43,217,0.25);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+    .logo { font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 800; }
+    .logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 30px; align-items: center; }
+    .nav-links a { color: rgba(255,255,255,0.75); font-size: 14px; transition: 0.3s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-button {
+        background: linear-gradient(135deg, var(--purple), var(--purple-light));
+        padding: 10px 20px;
+        border-radius: 30px;
+        color: white !important;
+        font-weight: 600;
+    }
+
+    /* BUSINESS SECTION */
+    .business-section {
+        padding: 90px 30px;
+        background: linear-gradient(180deg, #0d0118, #1a0a2e);
+        min-height: 80vh;
+    }
+    .container { max-width: 1100px; margin: auto; }
+    .section-label {
+        color: #c084fc;
+        font-size: 13px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 10px;
+    }
+    .section-title {
+        font-family: 'Poppins', sans-serif;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 15px;
+    }
+    .gradient-text {
+        background: linear-gradient(135deg, #c084fc, #f5a623, #c084fc);
+        background-size: 200%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: shimmer 3s linear infinite;
+    }
+    @keyframes shimmer {
+        0% { background-position: 0%; }
+        100% { background-position: 200%; }
+    }
+    .section-subtitle {
+        color: var(--text-light);
+        max-width: 600px;
+        line-height: 1.7;
+        margin-bottom: 45px;
+    }
+
+    /* BUSINESS GRID */
+    .business-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+        gap: 18px;
+    }
+    .business-card {
+        background: var(--card);
+        border: 1px solid rgba(108,43,217,0.3);
+        border-radius: 18px;
+        padding: 25px 15px;
+        text-align: center;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        transition: 0.3s;
+    }
+    .business-card:hover {
+        transform: translateY(-7px);
+        border-color: rgba(245,166,35,0.7);
+        box-shadow: 0 20px 40px rgba(108,43,217,0.3);
+    }
+    .business-icon { font-size: 2.5rem; margin-bottom: 12px; display: block; }
+    .business-name { font-family: 'Poppins', sans-serif; font-size: 0.95rem; font-weight: 600; color: #e9d5ff; }
+    .business-card p { color: rgba(255,255,255,0.5); font-size: 12px; margin-top: 7px; }
+
+    /* PACKAGE */
+    .package {
+        background: rgba(245,166,35,0.08);
+        border: 1px solid rgba(245,166,35,0.3);
+        border-radius: 20px;
+        padding: 30px;
+        margin-top: 50px;
+        text-align: center;
+    }
+    .package-name { color: rgba(255,255,255,0.7); font-size: 14px; margin-bottom: 5px; }
+    .package-price { font-family: 'Poppins', sans-serif; font-size: 2.8rem; font-weight: 900; color: var(--gold); }
+    .package-price span { font-size: 1rem; color: rgba(255,255,255,0.5); }
+    .package-items { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px; }
+    .package-items li {
+        background: rgba(108,43,217,0.2);
+        border: 1px solid rgba(108,43,217,0.3);
+        border-radius: 50px;
+        padding: 7px 15px;
+        font-size: 12px;
+        color: #e9d5ff;
+    }
+
+    /* WHY SECTION */
+    .why-section { padding: 90px 30px; background: linear-gradient(135deg, #1a0a2e, #0d0118); }
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 40px; }
+    .why-card { background: rgba(108,43,217,0.08); border: 1px solid rgba(108,43,217,0.2); border-radius: 18px; padding: 25px; }
+    .why-icon {
+        width: 48px; height: 48px;
+        background: linear-gradient(135deg, var(--purple), var(--purple-light));
+        border-radius: 12px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1.4rem;
+        margin-bottom: 18px;
+    }
+    .why-card h3 { font-family: 'Poppins', sans-serif; font-size: 1rem; margin-bottom: 8px; }
+    .why-card p { color: rgba(255,255,255,0.6); font-size: 0.85rem; line-height: 1.6; }
+
+    /* CONTACT */
+    .contact-section { padding: 90px 30px; background: var(--dark); }
+    .contact-container { max-width: 700px; margin: auto; text-align: center; }
+    .contact-container > p { color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 30px; }
+    .form-wrap {
+        background: var(--card);
+        border: 1px solid rgba(108,43,217,0.3);
+        border-radius: 24px;
+        padding: 35px;
+        text-align: left;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
+    label { font-size: 13px; font-weight: 600; color: #c084fc; }
+    input, select, textarea {
+        width: 100%;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(108,43,217,0.4);
+        border-radius: 12px;
+        padding: 13px 16px;
+        color: white;
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        outline: none;
+    }
+    input:focus, select:focus, textarea:focus {
+        border-color: var(--purple);
+        box-shadow: 0 0 0 3px rgba(108,43,217,0.2);
+    }
+    select option { background: var(--card); color: white; }
+    textarea { resize: vertical; min-height: 110px; }
+    ::placeholder { color: rgba(255,255,255,0.3); }
+    .submit-btn {
+        width: 100%;
+        background: linear-gradient(135deg, var(--purple), var(--purple-light));
+        color: white;
+        border: none;
+        padding: 16px;
+        border-radius: 12px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 15px 30px rgba(108,43,217,0.5); }
+    .submit-btn:disabled { cursor: default; transform: none; }
+    .success-message {
+        display: none;
+        background: rgba(34,197,94,0.15);
+        border: 1px solid rgba(34,197,94,0.4);
+        color: #4ade80;
+        padding: 15px;
+        border-radius: 12px;
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    /* FOOTER */
+    footer { background: #1a0a2e; padding: 35px 20px; text-align: center; border-top: 1px solid rgba(108,43,217,0.2); }
+    footer .brand { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.4rem; margin-bottom: 8px; }
+    footer p { color: rgba(255,255,255,0.4); font-size: 13px; margin-top: 5px; }
+
+    /* MOBILE */
+    @media(max-width:700px) {
+        .navbar { flex-direction: column; gap: 15px; }
+        .nav-links { gap: 15px; flex-wrap: wrap; justify-content: center; }
+        .business-section, .why-section, .contact-section { padding: 60px 20px; }
+        .form-row { grid-template-columns: 1fr; }
+        .form-wrap { padding: 25px; }
+        .package { padding: 25px 15px; }
+    }
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">Grow<span>Local</span></div>
+    <div class="nav-links">
+        <a href="#businesses">Businesses</a>
+        <a href="#package">Package</a>
+        <a href="#why">Why Us</a>
+        <a href="#contact" class="nav-button">Contact</a>
+    </div>
+</nav>
+
+<section class="business-section" id="businesses">
+    <div class="container">
+        <div class="section-label">WHO WE WORK WITH</div>
+        <h1 class="section-title">
+            Digital Marketing For<br>
+            <span class="gradient-text">Local Businesses</span>
+        </h1>
+        <p class="section-subtitle">
+            Choose your business category and let's create content that helps you
+            attract more customers and grow your online presence.
+        </p>
+
+        <div class="business-grid">
+            <div class="business-card" onclick="selectBusiness('Beauty Salon')">
+                <span class="business-icon">💇‍♀️</span>
+                <div class="business-name">Beauty Salons</div>
+                <p>Social media & reels</p>
+            </div>
+            <div class="business-card" onclick="selectBusiness('Makeup Artist')">
+                <span class="business-icon">💄</span>
+                <div class="business-name">Makeup Artists</div>
+                <p>Portfolio & promotions</p>
+            </div>
+            <div class="business-card" onclick="selectBusiness('Café')">
+                <span class="business-icon">☕</span>
+                <div class="business-name">Cafés</div>
+                <p>Food content & reels</p>
+            </div>
+            <div class="business-card" onclick="selectBusiness('Restaurant')">
+                <span class="business-icon">🍽️</span>
+                <div class="business-name">Restaurants</div>
+                <p>Promotional content</p>
+            </div>
+            <div class="business-card" onclick="selectBusiness('Boutique')">
+                <span class="business-icon">👗</span>
+                <div class="business-name">Boutiques</div>
+                <p>Fashion content</p>
+            </div>
+            <div class="business-card" onclick="selectBusiness('Gym')">
+                <span class="business-icon">🏋️</span>
+                <div class="business-name">Gyms</div>
+                <p>Fitness promotions</p>
+            </div>
+            <div class="business-card" onclick="selectBusiness('Coaching Centre')">
+                <span class="business-icon">📚</span>
+                <div class="business-name">Coaching Centres</div>
+                <p>Student promotions</p>
+            </div>
+            <div class="business-card" onclick="selectBusiness('Jewellery Shop')">
+                <span class="business-icon">💎</span>
+                <div class="business-name">Jewellery Shops</div>
+                <p>Product marketing</p>
+            </div>
+            <div class="business-card" onclick="selectBusiness('Small Hotel')">
+                <span class="business-icon">🏨</span>
+                <div class="business-name">Small Hotels</div>
+                <p>Travel content</p>
+            </div>
+            <div class="business-card" onclick="selectBusiness('Photographer')">
+                <span class="business-icon">📸</span>
+                <div class="business-name">Photographers</div>
+                <p>Portfolio marketing</p>
+            </div>
+        </div>
+
+        <div class="package" id="package">
+            <div class="package-name">STARTER SOCIAL MEDIA PACKAGE</div>
+            <div class="package-price">₹800-₹1,000<span> / month</span></div>
+            <ul class="package-items">
+                <li>✓ Instagram Management</li>
+                <li>✓ 12 Posts / Month</li>
+                <li>✓ Reels Creation</li>
+                <li>✓ Captions & Hashtags</li>
+                <li>✓ Story Updates</li>
+                <li>✓ Monthly Report</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="why-section" id="why">
+    <div class="container">
+        <div class="section-label">WHY CHOOSE US</div>
+        <h2 class="section-title">
+            We Deliver Results,<br>
+            <span class="gradient-text">Not Just Pretty Posts</span>
+        </h2>
+
+        <div class="why-grid">
+            <div class="why-card">
+                <div class="why-icon">🎯</div>
+                <h3>Targeted Content</h3>
+                <p>Content created specifically for your business and your target customers.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">⚡</div>
+                <h3>Fast Turnaround</h3>
+                <p>Get your content ready every week so your social media stays active.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">💰</div>
+                <h3>Affordable Pricing</h3>
+                <p>Professional digital marketing without expensive agency prices.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">📈</div>
+                <h3>Growth Focused</h3>
+                <p>We focus on helping you reach more people and attract potential customers.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="contact-section" id="contact">
+    <div class="contact-container">
+        <div class="section-label">GET IN TOUCH</div>
+        <h2 class="section-title">
+            Let's Grow Your<br>
+            <span class="gradient-text">Business Together</span>
+        </h2>
+        <p>Fill out the form below and tell us about your business. We'll contact you to discuss your requirements.</p>
+
+        <div class="form-wrap">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Your Name *</label>
+                    <input type="text" id="fname" placeholder="e.g. Priya Sharma">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number *</label>
+                    <input type="tel" id="fphone" placeholder="+91 98765 43210">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Business Name *</label>
+                <input type="text" id="fbiz" placeholder="e.g. Glow Beauty Salon">
+            </div>
+
+            <div class="form-group">
+                <label>Business Type *</label>
+                <select id="ftype">
+                    <option value="">Select your business type</option>
+                    <option value="Beauty Salon">Beauty Salon</option>
+                    <option value="Makeup Artist">Makeup Artist</option>
+                    <option value="Café">Café</option>
+                    <option value="Restaurant">Restaurant</option>
+                    <option value="Boutique">Boutique</option>
+                    <option value="Gym">Gym</option>
+                    <option value="Coaching Centre">Coaching Centre</option>
+                    <option value="Jewellery Shop">Jewellery Shop</option>
+                    <option value="Small Hotel">Small Hotel</option>
+                    <option value="Photographer">Photographer</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Your City *</label>
+                <input type="text" id="fcity" placeholder="e.g. Jaipur">
+            </div>
+
+            <div class="form-group">
+                <label>Instagram Username</label>
+                <input type="text" id="finsta" placeholder="@yourbusiness">
+            </div>
+
+            <div class="form-group">
+                <label>What do you need help with?</label>
+                <textarea id="fmsg" placeholder="Tell us about your business and what you want to improve..."></textarea>
+            </div>
+
+            <button class="submit-btn" onclick="submitForm()">Send My Free Quote Request →</button>
+
+            <div class="success-message" id="successMsg">
+                🎉 Thank you! Your request has been received. We'll contact you soon.
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="brand"><span class="gradient-text">GrowLocal</span> Digital</div>
+    <p>Helping local businesses grow online.</p>
+    <p>📱 Instagram &nbsp; | &nbsp; 📧 Email &nbsp; | &nbsp; 📍 Assam, India</p>
+    <p style="margin-top:15px;">© 2026 GrowLocal Digital. All Rights Reserved.</p>
+</footer>
+
+<script>
+    function selectBusiness(type) {
+        document.getElementById("ftype").value = type;
+        document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function submitForm() {
+        const name = document.getElementById("fname").value.trim();
+        const phone = document.getElementById("fphone").value.trim();
+        const business = document.getElementById("fbiz").value.trim();
+        const type = document.getElementById("ftype").value;
+        const city = document.getElementById("fcity").value.trim();
+
+        if (!name || !phone || !business || !type || !city) {
+            alert("Please fill in all required fields.");
+            return;
+        }
+
+        document.getElementById("successMsg").style.display = "block";
+
+        const button = document.querySelector(".submit-btn");
+        button.textContent = "Request Sent ✓";
+        button.style.background = "linear-gradient(135deg,#16a34a,#22c55e)";
+        button.disabled = true;
+    }
+</script>
+
+</body>
+</html>
