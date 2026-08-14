@@ -442,27 +442,45 @@
         document.getElementById("ftype").value = type;
         document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
     }
+function submitForm() {
+    const name = document.getElementById("fname").value.trim();
+    const phone = document.getElementById("fphone").value.trim();
+    const business = document.getElementById("fbiz").value.trim();
+    const type = document.getElementById("ftype").value;
+    const city = document.getElementById("fcity").value.trim();
+    const insta = document.getElementById("finsta").value.trim();
+    const msg = document.getElementById("fmsg").value.trim();
 
-    function submitForm() {
-        const name = document.getElementById("fname").value.trim();
-        const phone = document.getElementById("fphone").value.trim();
-        const business = document.getElementById("fbiz").value.trim();
-        const type = document.getElementById("ftype").value;
-        const city = document.getElementById("fcity").value.trim();
-
-        if (!name || !phone || !business || !type || !city) {
-            alert("Please fill in all required fields.");
-            return;
-        }
-
-        document.getElementById("successMsg").style.display = "block";
-
-        const button = document.querySelector(".submit-btn");
-        button.textContent = "Request Sent ✓";
-        button.style.background = "linear-gradient(135deg,#16a34a,#22c55e)";
-        button.disabled = true;
+    if (!name || !phone || !business || !type || !city) {
+      alert("Please fill in all required fields.");
+      return;
     }
+
+    const formData = new FormData();
+    formData.append("entry.425469975", name);
+    formData.append("entry.1898244385", phone);
+    formData.append("entry.1724489037", business);
+    formData.append("entry.1290822647", type);
+    formData.append("entry.314044767", city);
+    formData.append("entry.2098043710", insta);
+    formData.append("entry.363348906", msg);
+
+    fetch("https://docs.google.com/forms/d/e/1FAIpQLSdKpCg2FGnqPaY4sRTivWe3zXVrAWvjiXaMG-Uigf7CYMxGQA/formResponse", {
+      method: "POST",
+      mode: "no-cors",
+      body: formData
+    });
+
+    document.getElementById("successMsg").style.display = "block";
+
+    const button = document.querySelector(".submit-btn");
+    button.textContent = "Request Sent ✓";
+    button.style.background = "linear-gradient(135deg,#16a34a,#22c55e)";
+    button.disabled = true;
+}
 </script>
+    
+
 
 </body>
 </html>
